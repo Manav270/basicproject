@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <style>
+        body{
+            background-color: lightseagreen;
+        }
+    .button,.button1{
+        background-color: green;
+        border: none;
+        cursor: pointer;
+        padding: 20px;
+        color: white;
+        text-align: center;
+        font-size: 20px;
+        border-radius: 5%;
+        margin: auto;
+        display: block;
+        transition-duration: 0.4s;
+        overflow-wrap: break-word;
+    }
+    .button:hover{
+        background-color: white;
+        color: green;
+        border: 1px solid green;
+    }
+    .button1:hover{
+        background-color: white;
+        color: green;
+        border: 1px solid green;
+    }
+    h1{
+        text-align: center;
+    }
+    .img-class{
+        
+        
+    }
+</style>
+    <title>jquery</title>
+</head>
+<body>
+    <button type="submit" class="button">Click for Name</button>
+    <h1 class="name"></h1>
+    <button type="submit" class="button1">Click for image</button>
+    <img class="img-class" src="" alt="">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script>
+        $(document).ready(function()
+        {
+            $(".button").on("click",function(){
+                const nu1=Math.ceil(Math.random()*88);
+        $.get(`https://akabab.github.io/starwars-api/api/id/${nu1}.json`,function(data){
+            $("h1.name").text(data["name"]),
+            
+            $(".button1").on("click",function(){
+                $(".img-class").attr("src",data["image"])
+                                .css({
+                                    width: "300px",
+                                    height: "300px",
+                                    display: "block",
+                                    margin: "auto",
+                                    border: "3px solid black"
+                                })
+            })
+        })
+            })
+            
+       
+       
+    });
+    </script>
+</body>
+</html>
